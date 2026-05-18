@@ -1,13 +1,41 @@
 @props(['biodata', 'projects'])
 
 @php
-    $profileImage = $biodata?->photo
-        ? asset('storage/' . $biodata->photo)
-        : asset('profile-template/img/profile-default.jpg');
+    $profileImage = asset('images/profile.jpg');
+
+    $hardSkills = [
+        ['name' => 'Laravel', 'percentage' => 90],
+        ['name' => 'Filament v3', 'percentage' => 85],
+        ['name' => 'Livewire', 'percentage' => 80],
+        ['name' => 'Blade', 'percentage' => 85],
+        ['name' => 'MariaDB', 'percentage' => 75],
+        ['name' => 'Docker', 'percentage' => 80],
+    ];
+
+    $hardProjects = [
+        [
+            'title' => 'Website Portfolio Laravel',
+            'status' => 'Published',
+            'description' => 'Website portfolio berbasis Laravel, Blade, Livewire, dan Filament v3 untuk mengelola data admin.',
+            'url' => route('projects.index'),
+        ],
+        [
+            'title' => 'Sistem Manajemen Project',
+            'status' => 'Published',
+            'description' => 'Aplikasi CRUD data project dengan admin panel Filament v3 dan database MariaDB.',
+            'url' => route('projects.index'),
+        ],
+        [
+            'title' => 'Website Toko Game Online',
+            'status' => 'Review',
+            'description' => 'Konsep website penjualan item game online dengan fitur katalog, checkout, dan dashboard admin.',
+            'url' => route('projects.index'),
+        ],
+    ];
 @endphp
 
 <x-layouts.app
-    :title="($biodata?->name ?? config('app.name')) . ' | Home'"
+    title="Muhamad Ilham Suparno | Home"
     :biodata="$biodata"
 >
 
@@ -18,32 +46,34 @@
                 <span class="hero-label">Personal Portfolio</span>
 
                 <h1 class="hero-title">
-                    {{ $biodata?->name ?? 'Portfolio' }}
+                    Muhamad Ilham Suparno
                 </h1>
 
                 <p class="hero-description">
-                    {{ $biodata?->about ?? 'Hi, saya seorang developer yang fokus membuat aplikasi modern menggunakan teknologi Laravel dan Livewire.' }}
+                    Lahir di Jakarta pada 18 Februari 2005, adalah mahasiswa Fakultas Ilmu Komputer,Program Studi Sistem Informasi, 
+                    di Universitas Esa Unggul Tangerang sebagai anak pertama dari 3 bersaudara, ia tertarik pada dunia Komputer 
+                    bertujuan untuk meningkatkan pemanfaatan teknologi di masa depan nanti.
                 </p>
 
                 <div class="hero-contact">
                     <div class="contact-item glassmorphism">
                         <div>
                             <small>Email</small>
-                            <strong>{{ $biodata?->email ?? '-' }}</strong>
+                            <strong>ilhamlima903@gmail.com</strong>
                         </div>
                     </div>
 
                     <div class="contact-item glassmorphism">
                         <div>
                             <small>No HP</small>
-                            <strong>{{ $biodata?->phone ?? '-' }}</strong>
+                            <strong>085813295317</strong>
                         </div>
                     </div>
 
                     <div class="contact-item glassmorphism">
                         <div>
                             <small>Alamat</small>
-                            <strong>{{ $biodata?->address ?? '-' }}</strong>
+                            <strong>Tangerang, Indonesia</strong>
                         </div>
                     </div>
                 </div>
@@ -72,7 +102,11 @@
             </div>
 
             <div class="about-card glassmorphism">
-                <p>{{ $biodata?->about ?? '-' }}</p>
+                <p>
+                    Saya tertarik pada pengembangan aplikasi web modern, khususnya menggunakan Laravel sebagai backend,
+                    Filament v3 sebagai admin panel, Livewire dan Blade untuk frontend interaktif, serta MariaDB sebagai database.
+                    Saya juga menggunakan Docker untuk membuat environment development lebih rapi dan mudah dijalankan.
+                </p>
             </div>
         </div>
     </section>
@@ -86,28 +120,24 @@
             </div>
 
             <div class="skills-grid">
-                @forelse($biodata?->skills ?? [] as $skill)
+                @foreach($hardSkills as $skill)
                     <div class="skill-card glassmorphism reveal-item">
                         <div class="skill-header">
-                            <h3>{{ $skill->name }}</h3>
+                            <h3>{{ $skill['name'] }}</h3>
 
                             <span class="skill-percent">
-                                {{ $skill->percentage }}%
+                                {{ $skill['percentage'] }}%
                             </span>
                         </div>
 
                         <div class="skill-bar">
                             <div
                                 class="skill-progress"
-                                data-width="{{ $skill->percentage }}"
+                                data-width="{{ $skill['percentage'] }}"
                             ></div>
                         </div>
                     </div>
-                @empty
-                    <div class="empty-state">
-                        Belum ada skill.
-                    </div>
-                @endforelse
+                @endforeach
             </div>
         </div>
     </section>
@@ -121,36 +151,32 @@
             </div>
 
             <div class="skills-grid">
-                @forelse($projects as $project)
+                @foreach($hardProjects as $project)
                     <div class="skill-card glassmorphism reveal-item">
                         <div>
                             <span class="project-badge">
-                                {{ $project->status }}
+                                {{ $project['status'] }}
                             </span>
 
                             <h3 style="margin:18px 0 10px">
-                                {{ $project->title }}
+                                {{ $project['title'] }}
                             </h3>
 
                             <p style="color:#a0aec0;line-height:1.7">
-                                {{ $project->short_description }}
+                                {{ $project['description'] }}
                             </p>
                         </div>
 
                         <div style="margin-top:24px">
                             <a
-                                href="{{ route('projects.show', $project) }}"
+                                href="{{ $project['url'] }}"
                                 class="btn-primary"
                             >
                                 Lihat Detail
                             </a>
                         </div>
                     </div>
-                @empty
-                    <div class="empty-state">
-                        Belum ada project.
-                    </div>
-                @endforelse
+                @endforeach
             </div>
 
             <div class="project-more">
@@ -180,21 +206,28 @@
                     <div class="info-item">
                         <div>
                             <small>Email</small>
-                            <strong>{{ $biodata?->email ?? '-' }}</strong>
+                            <strong>ilhamlima903@gmail.com</strong>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div>
                             <small>No HP</small>
-                            <strong>{{ $biodata?->phone ?? '-' }}</strong>
+                            <strong>085813295317</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div>
+                            <small>Instagram</small>
+                            <strong>@igrenc.id</strong>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div>
                             <small>Alamat</small>
-                            <strong>{{ $biodata?->address ?? '-' }}</strong>
+                            <strong>Tangerang, Indonesia</strong>
                         </div>
                     </div>
                 </div>
