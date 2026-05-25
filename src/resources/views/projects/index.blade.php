@@ -17,6 +17,26 @@
             min-height: 280px;
             padding: 28px;
             overflow: hidden;
+
+            background: rgba(15, 23, 42, .7);
+            border: 1px solid rgba(148, 163, 184, .15);
+            border-radius: 24px;
+            backdrop-filter: blur(14px);
+            transition: .3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 211, 238, .4);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 200px;
+            border-radius: 18px;
+            object-fit: cover;
+            margin-bottom: 18px;
+            border: 1px solid rgba(148, 163, 184, .2);
         }
 
         .project-card > div {
@@ -53,6 +73,11 @@
             gap: 24px;
             padding: 28px;
             margin-bottom: 32px;
+
+            background: rgba(15, 23, 42, .7);
+            border: 1px solid rgba(148, 163, 184, .15);
+            border-radius: 24px;
+            backdrop-filter: blur(14px);
         }
 
         @media (max-width: 768px) {
@@ -68,7 +93,9 @@
         <div class="projects-hero glassmorphism">
             <div>
                 <span class="section-label">Showcase</span>
+
                 <h1>Daftar Project</h1>
+
                 <p>
                     Semua project yang tersimpan di database akan muncul di halaman ini.
                     Project bisa dikelola langsung melalui panel admin Filament.
@@ -82,9 +109,21 @@
 
         @if($finalReport)
             <div class="featured-project glassmorphism reveal-item">
+
+                @if($finalReport->thumbnail)
+                    <img
+                        src="{{ asset('storage/' . $finalReport->thumbnail) }}"
+                        alt="{{ $finalReport->title }}"
+                        class="project-thumbnail"
+                        style="max-width: 320px;"
+                    >
+                @endif
+
                 <div>
                     <span class="project-badge">Final Report</span>
+
                     <h2>Laporan Awal Project Akhir</h2>
+
                     <p>{{ $finalReport->short_description }}</p>
                 </div>
 
@@ -96,9 +135,21 @@
 
         <div class="project-grid">
             @forelse($projects as $project)
+
                 <article class="project-card reveal-item">
+
+                    @if($project->thumbnail)
+                        <img
+                            src="{{ asset('storage/' . $project->thumbnail) }}"
+                            alt="{{ $project->title }}"
+                            class="project-thumbnail"
+                        >
+                    @endif
+
                     <div>
-                        <span class="project-badge">{{ $project->status }}</span>
+                        <span class="project-badge">
+                            {{ ucfirst($project->status) }}
+                        </span>
 
                         <h3>{{ $project->title }}</h3>
 
@@ -109,11 +160,17 @@
                         Detail Project
                     </a>
                 </article>
+
             @empty
+
                 <div class="empty-state reveal-item">
                     <h3>Belum ada project</h3>
-                    <p>Silakan tambahkan data melalui panel admin Filament.</p>
+
+                    <p>
+                        Silakan tambahkan data melalui panel admin Filament.
+                    </p>
                 </div>
+
             @endforelse
         </div>
 
