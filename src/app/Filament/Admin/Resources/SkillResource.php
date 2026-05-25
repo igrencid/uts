@@ -3,15 +3,12 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\SkillResource\Pages;
-use App\Filament\Admin\Resources\SkillResource\RelationManagers;
 use App\Models\Skill;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SkillResource extends Resource
 {
@@ -29,6 +26,7 @@ class SkillResource extends Resource
                     ->label('Biodata'),
 
                 Forms\Components\TextInput::make('name')
+                    ->label('Skill')
                     ->required()
                     ->maxLength(255),
 
@@ -45,7 +43,31 @@ class SkillResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('biodata.name')
+                    ->label('Biodata')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Skill')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('percentage')
+                    ->label('Level')
+                    ->suffix('%')
+                    ->badge()
+                    ->color(fn ($state) => match (true) {
+                        $state >= 80 => 'success',
+                        $state >= 50 => 'warning',
+                        default => 'danger',
+                    })
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Terakhir Diubah')
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //

@@ -28,15 +28,33 @@ class ContactMessageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('message')->limit(120),
-                TextColumn::make('created_at')->label('Dikirim')->dateTime('d M Y H:i'),
+                TextColumn::make('name')
+                    ->label('Nama')
+                    ->sortable()
+                    ->searchable(),
+
+                TextColumn::make('email')
+                    ->label('Email')
+                    ->sortable()
+                    ->searchable()
+                    ->copyable(),
+
+                TextColumn::make('message')
+                    ->label('Pesan')
+                    ->limit(120)
+                    ->wrap(),
+
+                TextColumn::make('created_at')
+                    ->label('Dikirim')
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
+
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

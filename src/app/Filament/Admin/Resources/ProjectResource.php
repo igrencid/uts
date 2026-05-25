@@ -83,9 +83,21 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('title')
+                    ->label('Judul Project')
+                    ->searchable()
+                    ->sortable(),
 
-                TextColumn::make('short_description')->limit(80),
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->copyable()
+                    ->limit(30),
+
+                TextColumn::make('short_description')
+                    ->label('Deskripsi')
+                    ->limit(60)
+                    ->wrap(),
 
                 TextColumn::make('status')
                     ->badge()
@@ -103,20 +115,31 @@ class ProjectResource extends Resource
                     }),
 
                 TextColumn::make('is_final_report')
-                    ->label('Laporan Akhir')
+                    ->label('Final Report')
                     ->badge()
                     ->formatStateUsing(fn ($state): string => $state ? 'Ya' : 'Tidak')
                     ->color(fn ($state): string => $state ? 'success' : 'gray'),
 
+                TextColumn::make('report_pdf')
+                    ->label('PDF')
+                    ->formatStateUsing(fn ($state) => $state ? 'Ada File' : 'Tidak Ada')
+                    ->badge()
+                    ->color(fn ($state) => $state ? 'success' : 'danger'),
+
                 TextColumn::make('updated_at')
                     ->label('Terakhir Diubah')
-                    ->dateTime('d M Y'),
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
+
                 Tables\Actions\EditAction::make(),
+
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

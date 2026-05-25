@@ -3,15 +3,12 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\BiodataResource\Pages;
-use App\Filament\Admin\Resources\BiodataResource\RelationManagers;
 use App\Models\Biodata;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BiodataResource extends Resource
 {
@@ -24,21 +21,29 @@ class BiodataResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nama')
                     ->required(),
 
                 Forms\Components\FileUpload::make('photo')
+                    ->label('Foto')
                     ->image()
-                    ->directory('biodata'),
+                    ->directory('biodata')
+                    ->disk('public')
+                    ->visibility('public'),
 
                 Forms\Components\Textarea::make('about')
+                    ->label('Tentang')
                     ->rows(5),
 
                 Forms\Components\TextInput::make('email')
+                    ->label('Email')
                     ->email(),
 
-                Forms\Components\TextInput::make('phone'),
+                Forms\Components\TextInput::make('phone')
+                    ->label('No HP'),
 
-                Forms\Components\TextInput::make('address'),
+                Forms\Components\TextInput::make('address')
+                    ->label('Alamat'),
             ]);
     }
 
@@ -46,7 +51,35 @@ class BiodataResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('photo')
+                    ->label('Foto')
+                    ->disk('public')
+                    ->circular(),
+
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nama')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email')
+                    ->searchable()
+                    ->copyable(),
+
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('No HP')
+                    ->searchable()
+                    ->copyable(),
+
+                Tables\Columns\TextColumn::make('address')
+                    ->label('Alamat')
+                    ->limit(40)
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Terakhir Diubah')
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //

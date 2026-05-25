@@ -3,15 +3,12 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\EducationResource\Pages;
-use App\Filament\Admin\Resources\EducationResource\RelationManagers;
 use App\Models\Education;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EducationResource extends Resource
 {
@@ -29,10 +26,12 @@ class EducationResource extends Resource
                     ->label('Biodata'),
 
                 Forms\Components\TextInput::make('school')
+                    ->label('Sekolah / Universitas')
                     ->required()
                     ->maxLength(255),
 
                 Forms\Components\TextInput::make('major')
+                    ->label('Jurusan')
                     ->maxLength(255),
 
                 Forms\Components\TextInput::make('start_year')
@@ -55,7 +54,34 @@ class EducationResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('biodata.name')
+                    ->label('Biodata')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('school')
+                    ->label('Sekolah / Universitas')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('major')
+                    ->label('Jurusan')
+                    ->searchable()
+                    ->default('-'),
+
+                Tables\Columns\TextColumn::make('start_year')
+                    ->label('Mulai')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('end_year')
+                    ->label('Selesai')
+                    ->default('Sekarang')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Terakhir Diubah')
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //
