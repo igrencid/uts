@@ -45,6 +45,13 @@ class ProjectResource extends Resource
                     ->rows(3)
                     ->required(),
 
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->label('Thumbnail Project')
+                    ->image()
+                    ->directory('projects')
+                    ->disk('public')
+                    ->visibility('public'),
+
                 Forms\Components\Textarea::make('problem_analysis')
                     ->label('Analisis Masalah & Kebutuhan')
                     ->rows(6)
@@ -91,6 +98,11 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label('Thumbnail')
+                    ->disk('public')
+                    ->square(),
+
                 TextColumn::make('title')
                     ->label('Judul Project')
                     ->searchable()

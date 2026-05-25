@@ -13,6 +13,7 @@ class Project extends Model
         'slug',
         'title',
         'short_description',
+        'thumbnail',
         'problem_analysis',
         'system_requirements',
         'tech_stack',
