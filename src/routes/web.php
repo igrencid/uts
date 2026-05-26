@@ -26,6 +26,7 @@ Route::get('/', function () {
             'about' => '',
             'address' => '',
         ]);
+
         $biodata->setRelation('skills', collect());
         $biodata->setRelation('educations', collect());
     }
@@ -39,14 +40,28 @@ Route::get('/', function () {
     return view('home', compact('biodata', 'projects'));
 });
 
-Route::get('/projects', function () {
+Route::get('/projects', function (Request $request) {
     $projects = collect();
     $finalReport = null;
 
     if (Schema::hasTable('projects')) {
-        $projects = Project::orderByDesc('is_final_report')
+        $projects = Project::query()
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $search = $request->search;
+
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('short_description', 'like', '%' . $search . '%')
+                        ->orWhere('tech_stack', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($request->filled('status'), function ($query) use ($request) {
+                $query->where('status', $request->status);
+            })
+            ->orderByDesc('is_final_report')
             ->orderByDesc('updated_at')
             ->get();
+
         $finalReport = $projects->firstWhere('is_final_report', true);
     }
 
