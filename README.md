@@ -1,30 +1,41 @@
-# 🎮 IgrencStore.id - Portfolio & Game Item Store
+# 🎮 IgrencStore.id
+
+Dynamic portfolio and online game item store project built using Laravel 12, Filament v3, Livewire, Docker, and MariaDB.
+
+Project ini dibuat untuk memenuhi tugas UTS Pemrograman Web sekaligus sebagai media pembelajaran dan pengembangan portfolio pribadi.  
+Website dirancang menggunakan konsep modern dynamic website dimana seluruh data dapat dikelola langsung melalui admin panel Filament.
+
+IgrencStore memiliki sistem management project, upload thumbnail, upload laporan PDF, dashboard statistik, contact form, dan responsive UI dengan pendekatan fullstack Laravel ecosystem.
+
+---
 
 ![Laravel](https://img.shields.io/badge/Laravel-12-red)
 ![Filament](https://img.shields.io/badge/Filament-v3-orange)
-![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
 ![PHP](https://img.shields.io/badge/PHP-8.3-purple)
-![License](https://img.shields.io/badge/License-MIT-green)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
+![MariaDB](https://img.shields.io/badge/MariaDB-Database-brown)
 
 ---
 
-# 📌 About Project
+# ✨ Fitur Utama
 
-IgrencStore.id is a dynamic portfolio and online game item store project built using Laravel 12 and Filament v3.
-
-This project was developed for the Web Programming course and demonstrates the implementation of:
-- Dynamic CRUD system
-- Admin panel management
-- Docker environment
-- Role & Permission management
-- Modern responsive UI
-- Portfolio project showcase
-
-The website allows users to view portfolio projects, skills, education history, and contact information, while administrators can manage all content directly from the Filament admin dashboard.
+- Dynamic Portfolio Website
+- Admin Panel Filament v3
+- CRUD Biodata
+- CRUD Skill
+- CRUD Education
+- CRUD Project
+- Upload Thumbnail Project
+- Dynamic Slug URL
+- Upload Laporan PDF
+- Dashboard Statistics Widget
+- Contact Form
+- Responsive Modern UI
+- Docker Development Environment
 
 ---
 
-# 🚀 Preview
+# 🖼 Preview Project
 
 ## 🏠 Home Page
 
@@ -50,32 +61,13 @@ The website allows users to view portfolio projects, skills, education history, 
 
 ---
 
-# ✨ Features
-
-- Dynamic Portfolio Website
-- Filament v3 Admin Panel
-- CRUD Biodata
-- CRUD Skills
-- CRUD Education
-- CRUD Projects
-- Project Thumbnail Upload
-- Dynamic Slug URL
-- Upload PDF Report
-- Contact Form
-- Dashboard Statistics Widget
-- Role & Permission Management
-- Responsive Modern UI
-- Docker Development Environment
-
----
-
 # 🛠 Tech Stack
 
 | Technology | Description |
 |---|---|
 | Laravel 12 | Backend Framework |
 | Filament v3 | Admin Panel |
-| Livewire | Dynamic Frontend |
+| Livewire | Dynamic Component |
 | Blade | Templating Engine |
 | MariaDB | Database |
 | Docker | Development Environment |
@@ -84,7 +76,7 @@ The website allows users to view portfolio projects, skills, education history, 
 
 ---
 
-# 🧠 Architecture
+# 🧠 Arsitektur Sistem
 
 ## Frontend
 - Blade
@@ -114,7 +106,7 @@ The website allows users to view portfolio projects, skills, education history, 
 
 ---
 
-# 📂 Project Structure
+# 📂 Struktur Project
 
 ```text
 uts/
@@ -134,7 +126,7 @@ uts/
 
 ---
 
-# ⚙️ Installation Guide
+# ⚙️ Panduan Instalasi
 
 ## 1. Clone Repository
 
@@ -145,20 +137,20 @@ cd uts
 
 ---
 
-## 2. Run Docker Container
+## 2. Jalankan Docker
 
 ```bash
 docker compose up -d --build
 ```
 
-Service that will run:
+Service yang akan berjalan:
 - PHP 8.3
 - Nginx
 - MariaDB
 
 ---
 
-## 3. Enter Laravel Container
+## 3. Masuk ke Container PHP
 
 ```bash
 docker compose exec php bash
@@ -176,21 +168,14 @@ composer install
 
 ## 5. Setup Environment
 
-Copy environment file:
-
 ```bash
 cp .env.example .env
-```
-
-Generate Laravel key:
-
-```bash
 php artisan key:generate
 ```
 
 ---
 
-## 6. Run Migration & Seeder
+## 6. Jalankan Migration
 
 ```bash
 php artisan migrate --seed
@@ -198,7 +183,7 @@ php artisan migrate --seed
 
 ---
 
-## 7. Create Storage Link
+## 7. Storage Link
 
 ```bash
 php artisan storage:link
@@ -206,9 +191,9 @@ php artisan storage:link
 
 ---
 
-# 🌐 Access Website
+# 🌐 Akses Website
 
-## Frontend Website
+## Frontend
 
 ```text
 https://uts.test
@@ -216,7 +201,7 @@ https://uts.test
 
 ---
 
-## Filament Admin Panel
+## Admin Panel
 
 ```text
 https://uts.test/admin
@@ -233,7 +218,7 @@ Email    : admin@admin.com
 Password : password
 ```
 
-Full access to all systems and resources.
+Akses penuh ke seluruh sistem.
 
 ---
 
@@ -244,69 +229,69 @@ Email    : user@admin.com
 Password : password
 ```
 
-Limited access based on role permissions.
+Akses terbatas sesuai role permission.
 
 ---
 
 # 📊 Dashboard Widget
 
-The admin dashboard includes:
-- Total Projects
-- Total Skills
+Dashboard admin memiliki:
+- Total Project
+- Total Skill
 - Total Education
-- Contact Messages
+- Total Contact Message
 
 ---
 
-# 📁 Dynamic Project System
+# 📁 Sistem Project Dinamis
 
-Each project supports:
+Setiap project mendukung:
 - Thumbnail Image
 - Dynamic Slug
+- Upload PDF
 - Tech Stack
-- PDF Report
 - Status Badge
-- Detailed Project Page
+- Detail Project Page
 
 ---
 
-# 📚 Learning Objectives
+# 🚀 Pengembangan Selanjutnya
 
-This project was created to learn:
-- Laravel MVC Architecture
-- CRUD System
-- Filament Admin Panel
-- Database Relationship
-- Docker Environment
-- Dynamic Portfolio Development
-- Authentication & Authorization
-
----
-
-# 👨‍💻 Developer
-
-| Name | Information |
-|---|---|
-| Name | Muhamad Ilham Suparno |
-| NIM | 20240803049 |
-| University | Universitas Esa Unggul |
-| Course | Web Programming |
+Fitur yang akan dikembangkan:
+- Shopping Cart
+- Checkout System
+- Midtrans Payment Gateway
+- Order Management
+- Product Category
+- Search & Filter
+- Live Deployment
 
 ---
 
-# 📌 Notes
+# 📌 Catatan
 
-- Make sure Docker Desktop is running.
-- Make sure the `uts.test` domain is configured correctly.
-- Recommended browser:
+- Pastikan Docker Desktop berjalan.
+- Pastikan domain `uts.test` sudah terhubung ke localhost.
+- Browser yang direkomendasikan:
   - Google Chrome
   - Microsoft Edge
 
 ---
 
+# 👨‍💻 Developer
+
+| Nama | Informasi |
+|---|---|
+| Nama | Muhamad Ilham Suparno |
+| NIM | 20240803049 |
+| Universitas | Universitas Esa Unggul |
+| Mata Kuliah | Pemrograman Web |
+
+---
+
 # 📜 License
 
-This project is created for educational and portfolio purposes.
+Project ini dibuat untuk kebutuhan pembelajaran dan portfolio pribadi.
 
 ---
 
