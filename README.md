@@ -1,11 +1,11 @@
 # 🎮 IgrencStore.id
 
-Dynamic portfolio and online game item store project built using Laravel 12, Filament v3, Livewire, Docker, and MariaDB.
+Website portfolio dan management project berbasis Laravel 12 yang dibangun menggunakan Filament v3, Livewire, Docker, dan MariaDB.
 
-Project ini dibuat untuk memenuhi tugas UTS Pemrograman Web sekaligus sebagai media pembelajaran dan pengembangan portfolio pribadi.  
-Website dirancang menggunakan konsep modern dynamic website dimana seluruh data dapat dikelola langsung melalui admin panel Filament.
+Project ini dibuat untuk memenuhi tugas UTS Mata Kuliah Pemrograman Web sekaligus sebagai media pembelajaran pengembangan aplikasi modern berbasis Laravel ecosystem.  
+Seluruh data website dapat dikelola secara dinamis melalui admin panel Filament tanpa perlu mengubah source code secara langsung.
 
-IgrencStore memiliki sistem management project, upload thumbnail, upload laporan PDF, dashboard statistik, contact form, dan responsive UI dengan pendekatan fullstack Laravel ecosystem.
+Selain sebagai portfolio website, project ini juga dirancang sebagai fondasi awal online game item store yang nantinya akan dikembangkan menjadi sistem e-commerce digital.
 
 ---
 
@@ -17,21 +17,68 @@ IgrencStore memiliki sistem management project, upload thumbnail, upload laporan
 
 ---
 
+# 📌 Tentang Project
+
+IgrencStore.id merupakan website portfolio dinamis yang memiliki sistem management data berbasis admin panel Filament v3.  
+Admin dapat mengelola seluruh data website seperti biodata, skill, pendidikan, project, serta upload thumbnail dan laporan project dalam format PDF.
+
+Project ini menggunakan pendekatan fullstack Laravel ecosystem dengan kombinasi:
+- Laravel 12
+- Filament v3
+- Livewire
+- Blade
+- MariaDB
+- Docker
+
+Seluruh sistem dirancang agar mudah dikembangkan dan scalable untuk pengembangan fitur berikutnya.
+
+---
+
 # ✨ Fitur Utama
 
+## 🌐 Frontend Website
+- Responsive Landing Page
 - Dynamic Portfolio Website
+- Dynamic Project Detail Page
+- Contact Form
+- Responsive Navigation
+- Modern UI Design
+- Dynamic Data Rendering
+
+---
+
+## 🛠 Admin Panel
 - Admin Panel Filament v3
+- Authentication Login
+- Dashboard Statistics
 - CRUD Biodata
 - CRUD Skill
 - CRUD Education
 - CRUD Project
-- Upload Thumbnail Project
+- File Upload Management
 - Dynamic Slug URL
-- Upload Laporan PDF
-- Dashboard Statistics Widget
-- Contact Form
-- Responsive Modern UI
-- Docker Development Environment
+- PDF Upload Support
+
+---
+
+## 📂 Sistem Project
+Setiap project mendukung:
+- Thumbnail Project
+- Detail Description
+- Upload PDF Laporan
+- Tech Stack
+- Status Badge
+- Dynamic Slug
+- Preview Detail Project
+
+---
+
+## 📊 Dashboard Widget
+Dashboard admin menampilkan:
+- Total Project
+- Total Skill
+- Total Education
+- Total Contact Message
 
 ---
 
@@ -66,43 +113,76 @@ IgrencStore memiliki sistem management project, upload thumbnail, upload laporan
 | Technology | Description |
 |---|---|
 | Laravel 12 | Backend Framework |
-| Filament v3 | Admin Panel |
-| Livewire | Dynamic Component |
-| Blade | Templating Engine |
-| MariaDB | Database |
-| Docker | Development Environment |
+| Filament v3 | Admin Panel Framework |
+| Livewire | Dynamic Laravel Component |
+| Blade | Laravel Templating Engine |
+| MariaDB | Database Management System |
+| Docker | Container Development |
 | Nginx | Web Server |
 | PHP 8.3 | Backend Language |
+| Tailwind CSS | Frontend Styling |
 
 ---
 
 # 🧠 Arsitektur Sistem
 
 ## Frontend
+Frontend dibangun menggunakan:
 - Blade
 - Livewire
 - HTML
 - CSS
 - JavaScript
+- Tailwind CSS
+
+Frontend bertugas untuk:
+- Menampilkan portfolio
+- Menampilkan detail project
+- Menampilkan contact form
+- Menampilkan data dinamis dari database
 
 ---
 
 ## Backend
+Backend menggunakan:
 - Laravel 12
 - Filament v3
 - Eloquent ORM
 
+Backend bertugas untuk:
+- Mengelola CRUD data
+- Authentication login
+- File upload
+- Dashboard management
+- Routing system
+- Database management
+
 ---
 
 ## Database
+Database menggunakan:
 - MariaDB
+
+Database menyimpan:
+- Biodata
+- Skill
+- Education
+- Project
+- Contact Message
 
 ---
 
 ## Infrastructure
+Infrastructure menggunakan:
 - Docker
 - Docker Compose
 - Nginx
+
+Tujuan penggunaan Docker:
+- Mempermudah setup project
+- Menyamakan environment development
+- Mempermudah deployment
+- Mengurangi konflik dependency
 
 ---
 
@@ -119,8 +199,10 @@ uts/
 │   ├── database/
 │   ├── public/
 │   ├── resources/
-│   └── routes/
+│   ├── routes/
+│   └── storage/
 ├── docker-compose.yml
+├── LICENSE
 └── README.md
 ```
 
@@ -141,6 +223,12 @@ cd uts
 
 ```bash
 docker compose up -d --build
+```
+
+Atau menggunakan custom command:
+
+```bash
+dcu -d --build
 ```
 
 Service yang akan berjalan:
@@ -175,10 +263,16 @@ php artisan key:generate
 
 ---
 
-## 6. Jalankan Migration
+## 6. Jalankan Migration dan Seeder
 
 ```bash
 php artisan migrate --seed
+```
+
+Atau menggunakan custom command:
+
+```bash
+dca migrate --seed
 ```
 
 ---
@@ -189,11 +283,19 @@ php artisan migrate --seed
 php artisan storage:link
 ```
 
+Atau menggunakan custom command:
+
+```bash
+dca storage:link
+```
+
 ---
 
-# 🌐 Akses Website
+# 🚀 Menjalankan Project
 
-## Frontend
+Setelah seluruh service berjalan:
+
+## Frontend Website
 
 ```text
 https://uts.test
@@ -209,7 +311,7 @@ https://uts.test/admin
 
 ---
 
-# 🔐 Login Account
+# 🔐 Demo Login
 
 ## 👑 Super Admin
 
@@ -218,7 +320,12 @@ Email    : admin@admin.com
 Password : password
 ```
 
-Akses penuh ke seluruh sistem.
+Akses:
+- Full CRUD
+- Dashboard
+- Upload file
+- Manage project
+- Manage portfolio
 
 ---
 
@@ -229,29 +336,107 @@ Email    : user@admin.com
 Password : password
 ```
 
-Akses terbatas sesuai role permission.
+Akses:
+- Login dashboard
+- Akses terbatas sesuai role
 
 ---
 
-# 📊 Dashboard Widget
+# 📁 Penjelasan Resource Filament
 
-Dashboard admin memiliki:
-- Total Project
-- Total Skill
-- Total Education
-- Total Contact Message
+## Biodata Resource
+Digunakan untuk:
+- Mengelola profil pribadi
+- Nama
+- Foto
+- Deskripsi
+- Informasi profile
 
 ---
 
-# 📁 Sistem Project Dinamis
+## Skill Resource
+Digunakan untuk:
+- Menampilkan skill developer
+- Persentase skill
+- Kategori skill
 
-Setiap project mendukung:
-- Thumbnail Image
-- Dynamic Slug
-- Upload PDF
-- Tech Stack
-- Status Badge
-- Detail Project Page
+---
+
+## Education Resource
+Digunakan untuk:
+- Menampilkan riwayat pendidikan
+- Tahun pendidikan
+- Nama institusi
+
+---
+
+## Project Resource
+Digunakan untuk:
+- Menambahkan project portfolio
+- Upload thumbnail
+- Upload PDF laporan
+- Dynamic slug
+- Detail project
+
+---
+
+# 🧪 Workflow Development
+
+## Membuat Resource Baru
+
+```bash
+dcm Project
+```
+
+Command tersebut otomatis membuat:
+- Model
+- Migration
+- Seeder
+- Controller
+- Filament Resource
+
+---
+
+## Menjalankan Migration
+
+```bash
+dca migrate
+```
+
+---
+
+## Menjalankan Seeder
+
+```bash
+dca db:seed
+```
+
+---
+
+## Menjalankan Docker
+
+```bash
+dcu -d
+```
+
+---
+
+## Mematikan Docker
+
+```bash
+dcd
+```
+
+---
+
+# 🔒 Security
+
+Beberapa implementasi keamanan:
+- Environment file tidak di-push ke GitHub
+- Menggunakan `.gitignore`
+- Authentication login
+- File validation upload
+- Database migration system
 
 ---
 
@@ -265,16 +450,33 @@ Fitur yang akan dikembangkan:
 - Product Category
 - Search & Filter
 - Live Deployment
+- Dark Mode
+- Activity Log
+- Multi Role Permission
+- API Integration
 
 ---
 
 # 📌 Catatan
 
-- Pastikan Docker Desktop berjalan.
-- Pastikan domain `uts.test` sudah terhubung ke localhost.
+- Pastikan Docker Desktop berjalan sebelum menjalankan project.
+- Pastikan domain `uts.test` sudah diarahkan ke localhost.
 - Browser yang direkomendasikan:
   - Google Chrome
   - Microsoft Edge
+
+---
+
+# 🤝 Contribution
+
+Project ini dibuat untuk pembelajaran dan pengembangan portfolio.
+
+Langkah contribution:
+1. Fork repository
+2. Create new branch
+3. Commit perubahan
+4. Push branch
+5. Open pull request
 
 ---
 
@@ -291,7 +493,7 @@ Fitur yang akan dikembangkan:
 
 # 📜 License
 
-Project ini dibuat untuk kebutuhan pembelajaran dan portfolio pribadi.
+Project ini menggunakan MIT License.
 
 ---
 
