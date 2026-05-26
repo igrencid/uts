@@ -1,4 +1,4 @@
-# 🎮 IgrencStore.id
+# IgrencStore.id
 
 IgrencStore.id adalah website portfolio dan management project berbasis Laravel 12 yang dibangun menggunakan Filament v3, Livewire, Docker, dan MariaDB.
 
@@ -14,9 +14,9 @@ Project ini dibuat untuk memenuhi tugas UTS Mata Kuliah Pemrograman Web sekaligu
 
 ---
 
-# ✨ Fitur
+# Fitur
 
-## 🌐 Frontend
+## Frontend
 - Responsive Landing Page
 - Dynamic Portfolio Website
 - Dynamic Project Detail
@@ -26,7 +26,7 @@ Project ini dibuat untuk memenuhi tugas UTS Mata Kuliah Pemrograman Web sekaligu
 
 ---
 
-## 🛠 Admin Panel
+## Admin Panel
 - Admin Panel Filament v3
 - Authentication Login
 - Dashboard Statistics
@@ -40,7 +40,7 @@ Project ini dibuat untuk memenuhi tugas UTS Mata Kuliah Pemrograman Web sekaligu
 
 ---
 
-## 📊 Dashboard
+## Dashboard
 Dashboard admin menampilkan:
 - Total Project
 - Total Skill
@@ -49,33 +49,7 @@ Dashboard admin menampilkan:
 
 ---
 
-# 🖼 Preview Project
-
-## 🏠 Home Page
-
-![Home](docs/home-preview.png)
-
----
-
-## 🛠 Admin Dashboard
-
-![Admin](docs/admin-preview.png)
-
----
-
-## 📂 Projects Page
-
-![Projects](docs/projects-preview.png)
-
----
-
-## 📄 Project Detail
-
-![Project Detail](docs/project-detail-preview.png)
-
----
-
-# 🛠 Tech Stack
+# Tech Stack
 
 - Laravel 12
 - Filament v3
@@ -89,7 +63,7 @@ Dashboard admin menampilkan:
 
 ---
 
-# 📂 Struktur Project
+# Struktur Project
 
 ```text
 uts/
@@ -112,7 +86,7 @@ uts/
 
 ---
 
-# ⚙️ Instalasi
+# Instalasi
 
 ## 1. Clone Repository
 
@@ -185,7 +159,7 @@ Digunakan agar file upload seperti thumbnail dan PDF dapat diakses melalui brows
 
 ---
 
-# 🚀 Menjalankan Project
+# Menjalankan Project
 
 ## Frontend Website
 
@@ -203,9 +177,9 @@ https://uts.test/admin
 
 ---
 
-# 🔐 Demo Login
+# Demo Login
 
-## 👑 Super Admin
+## Super Admin
 
 ```text
 Email    : admin@admin.com
@@ -220,7 +194,7 @@ Akses:
 
 ---
 
-# 📁 Resource Filament
+# Resource Filament
 
 ## Biodata Resource
 Digunakan untuk mengelola:
@@ -255,7 +229,7 @@ Digunakan untuk:
 
 ---
 
-# 🧪 Workflow Development
+# Workflow Development
 
 ## Membuat Resource Baru
 
@@ -304,7 +278,7 @@ dcd
 
 ---
 
-# 🧪 Testing
+# Testing
 
 ```bash
 dca test
@@ -318,7 +292,7 @@ Testing digunakan untuk memastikan:
 
 ---
 
-# 🗄 Database
+# Database
 
 Table utama:
 - users
@@ -330,7 +304,7 @@ Table utama:
 
 ---
 
-# 🔒 Security
+# Security
 
 Implementasi keamanan:
 - `.env` tidak di-push ke GitHub
@@ -340,7 +314,7 @@ Implementasi keamanan:
 
 ---
 
-# 📌 Catatan
+# Catatan
 
 - Pastikan Docker Desktop berjalan
 - Pastikan domain `uts.test` sudah diarahkan ke localhost
@@ -348,7 +322,7 @@ Implementasi keamanan:
 
 ---
 
-# 🚀 Pengembangan Selanjutnya
+# Pengembangan Selanjutnya
 
 - Shopping Cart
 - Midtrans Payment Gateway
@@ -359,7 +333,7 @@ Implementasi keamanan:
 
 ---
 
-# 🤝 Contribution
+# Contribution
 
 1. Fork repository
 2. Create new branch
@@ -369,7 +343,7 @@ Implementasi keamanan:
 
 ---
 
-# 👨‍💻 Developer
+# Developer
 
 Muhamad Ilham Suparno  
 Universitas Esa Unggul  
@@ -377,13 +351,13 @@ NIM: 20240803049
 
 ---
 
-# 📜 License
+# License
 
 MIT License
 
 ---
 
-# ⭐ Repository
+# Repository
 
 ```text
 https://github.com/igrencid/uts
