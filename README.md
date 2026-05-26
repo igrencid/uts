@@ -1,11 +1,11 @@
 # 🎮 IgrencStore.id
 
-Website portfolio dan management project berbasis Laravel 12 yang dibangun menggunakan Filament v3, Livewire, Docker, dan MariaDB.
+Dynamic portfolio and online game item store project built using Laravel 12, Filament v3, Livewire, Docker, and MariaDB.
 
-Project ini dibuat untuk memenuhi tugas UTS Mata Kuliah Pemrograman Web sekaligus sebagai media pembelajaran pengembangan aplikasi modern berbasis Laravel ecosystem.  
-Seluruh data website dapat dikelola secara dinamis melalui admin panel Filament tanpa perlu mengubah source code secara langsung.
+Project ini dibuat untuk memenuhi tugas UTS Pemrograman Web sekaligus sebagai media pembelajaran dan pengembangan portfolio pribadi.  
+Website dirancang menggunakan konsep modern dynamic website dimana seluruh data dapat dikelola langsung melalui admin panel Filament.
 
-Selain sebagai portfolio website, project ini juga dirancang sebagai fondasi awal online game item store yang nantinya akan dikembangkan menjadi sistem e-commerce digital.
+IgrencStore memiliki sistem management project, upload thumbnail, upload laporan PDF, dashboard statistik, contact form, dan responsive UI dengan pendekatan fullstack Laravel ecosystem.
 
 ---
 
@@ -26,14 +26,12 @@ Selain sebagai portfolio website, project ini juga dirancang sebagai fondasi awa
 - CRUD Education
 - CRUD Project
 - Upload Thumbnail Project
-- Upload PDF Laporan
 - Dynamic Slug URL
+- Upload Laporan PDF
 - Dashboard Statistics Widget
 - Contact Form
-- Responsive UI
+- Responsive Modern UI
 - Docker Development Environment
-- Role Authentication
-- File Storage Management
 
 ---
 
@@ -72,7 +70,7 @@ Selain sebagai portfolio website, project ini juga dirancang sebagai fondasi awa
 | Livewire | Dynamic Component |
 | Blade | Templating Engine |
 | MariaDB | Database |
-| Docker | Containerization |
+| Docker | Development Environment |
 | Nginx | Web Server |
 | PHP 8.3 | Backend Language |
 
@@ -86,7 +84,6 @@ Selain sebagai portfolio website, project ini juga dirancang sebagai fondasi awa
 - HTML
 - CSS
 - JavaScript
-- Tailwind CSS
 
 ---
 
@@ -94,7 +91,6 @@ Selain sebagai portfolio website, project ini juga dirancang sebagai fondasi awa
 - Laravel 12
 - Filament v3
 - Eloquent ORM
-- Authentication System
 
 ---
 
@@ -126,123 +122,181 @@ uts/
 │   └── routes/
 ├── docker-compose.yml
 └── README.md
-⚙️ Panduan Instalasi
-1. Clone Repository
+```
+
+---
+
+# ⚙️ Panduan Instalasi
+
+## 1. Clone Repository
+
+```bash
 git clone https://github.com/igrencid/uts.git
 cd uts
-2. Jalankan Docker
+```
+
+---
+
+## 2. Jalankan Docker
+
+```bash
 docker compose up -d --build
-
-Atau menggunakan custom command:
-
-dcu -d --build
+```
 
 Service yang akan berjalan:
+- PHP 8.3
+- Nginx
+- MariaDB
 
-PHP 8.3
-Nginx
-MariaDB
-3. Masuk ke Container PHP
+---
+
+## 3. Masuk ke Container PHP
+
+```bash
 docker compose exec php bash
-4. Install Dependency
+```
+
+---
+
+## 4. Install Dependency
+
+```bash
 composer install
-5. Setup Environment
+```
+
+---
+
+## 5. Setup Environment
+
+```bash
 cp .env.example .env
 php artisan key:generate
-6. Jalankan Migration dan Seeder
+```
+
+---
+
+## 6. Jalankan Migration
+
+```bash
 php artisan migrate --seed
+```
 
-Atau menggunakan custom command:
+---
 
-dca migrate --seed
-7. Storage Link
+## 7. Storage Link
+
+```bash
 php artisan storage:link
-🚀 Menjalankan Project
+```
 
-Setelah seluruh service berjalan:
+---
 
-Frontend
+# 🌐 Akses Website
+
+## Frontend
+
+```text
 https://uts.test
-Admin Panel
+```
+
+---
+
+## Admin Panel
+
+```text
 https://uts.test/admin
-🔐 Demo Login
-👑 Super Admin
+```
+
+---
+
+# 🔐 Login Account
+
+## 👑 Super Admin
+
+```text
 Email    : admin@admin.com
 Password : password
+```
 
-Akses penuh ke seluruh fitur sistem.
+Akses penuh ke seluruh sistem.
 
-👤 User
+---
+
+## 👤 User
+
+```text
 Email    : user@admin.com
 Password : password
+```
 
 Akses terbatas sesuai role permission.
 
-📊 Dashboard Widget
+---
 
-Dashboard admin menampilkan:
+# 📊 Dashboard Widget
 
-Total Project
-Total Skill
-Total Education
-Total Contact Message
-📁 Sistem Project Dinamis
+Dashboard admin memiliki:
+- Total Project
+- Total Skill
+- Total Education
+- Total Contact Message
 
-Setiap project mendukung fitur:
+---
 
-Upload Thumbnail
-Dynamic Slug
-Upload PDF
-Tech Stack
-Status Badge
-Detail Project Page
-🧪 Contoh Workflow Development
-Membuat Resource Filament
-dcm Project
-Menjalankan Migration
-dca migrate
-Menjalankan Seeder
-dca db:seed
-🚀 Pengembangan Selanjutnya
+# 📁 Sistem Project Dinamis
 
-Beberapa fitur yang akan dikembangkan:
+Setiap project mendukung:
+- Thumbnail Image
+- Dynamic Slug
+- Upload PDF
+- Tech Stack
+- Status Badge
+- Detail Project Page
 
-Shopping Cart
-Checkout System
-Midtrans Payment Gateway
-Order Management
-Product Category
-Search & Filter
-Live Deployment
-Dark Mode
-Activity Log
-📌 Catatan
-Pastikan Docker Desktop berjalan sebelum menjalankan project.
-Pastikan domain uts.test sudah diarahkan ke localhost.
-Browser yang direkomendasikan:
-Google Chrome
-Microsoft Edge
-🤝 Contribution
+---
 
-Project ini dibuat untuk pembelajaran.
-Apabila ingin melakukan pengembangan:
+# 🚀 Pengembangan Selanjutnya
 
-Fork repository
-Create new branch
-Commit perubahan
-Push branch
-Open pull request
-👨‍💻 Developer
-Nama	Informasi
-Nama	Muhamad Ilham Suparno
-NIM	20240803049
-Universitas	Universitas Esa Unggul
-Mata Kuliah	Pemrograman Web
-📜 License
+Fitur yang akan dikembangkan:
+- Shopping Cart
+- Checkout System
+- Midtrans Payment Gateway
+- Order Management
+- Product Category
+- Search & Filter
+- Live Deployment
 
-Project ini dibuat untuk kebutuhan pembelajaran, portfolio, dan pengembangan pribadi.
+---
 
-MIT License © 2026 igrencid
+# 📌 Catatan
 
-⭐ Repository
+- Pastikan Docker Desktop berjalan.
+- Pastikan domain `uts.test` sudah terhubung ke localhost.
+- Browser yang direkomendasikan:
+  - Google Chrome
+  - Microsoft Edge
+
+---
+
+# 👨‍💻 Developer
+
+| Nama | Informasi |
+|---|---|
+| Nama | Muhamad Ilham Suparno |
+| NIM | 20240803049 |
+| Universitas | Universitas Esa Unggul |
+| Mata Kuliah | Pemrograman Web |
+
+---
+
+# 📜 License
+
+Project ini dibuat untuk kebutuhan pembelajaran dan portfolio pribadi.
+
+---
+
+# ⭐ Repository
+
+```text
 https://github.com/igrencid/uts
+```
