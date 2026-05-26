@@ -7,63 +7,57 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('profile-template/css/profile.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('profile-template/css/profile.css') }}?v={{ time() }}">
 </head>
 
-<body>
+<body class="theme-transition">
 
-<div class="animated-bg">
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
-</div>
+<header class="site-header">
 
-<header class="navbar">
-    <div class="nav-container">
+    <div class="site-brand">
+        {{ $biodata?->name ?? config('app.name') }}
+    </div>
 
-        <a href="{{ url('/') }}" class="nav-brand">
-            {{ strtoupper(substr($biodata?->name ?? config('app.name'), 0, 1)) }}
+    <nav class="site-nav">
+
+        <a href="{{ url('/') }}">
+            Home
         </a>
 
-        <nav class="nav-menu">
-            <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
-                Home
-            </a>
+        <a href="{{ route('projects.index') }}">
+            Projects
+        </a>
 
-            <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.*') ? 'active' : '' }}">
-                Projects
-            </a>
+        <a href="{{ url('/#contact') }}">
+            Contact
+        </a>
 
-            <a href="{{ url('/#contact') }}" class="nav-link">
-                Contact
-            </a>
-        </nav>
+        <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+        >
+            🌙
+        </button>
 
-        <div class="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    </nav>
 
-    </div>
 </header>
 
 <main>
     {{ $slot }}
 </main>
 
-<footer class="footer">
-    <div class="footer-content">
-        <p>
-            © {{ date('Y') }} {{ $biodata?->name ?? config('app.name') }}.
-            All rights reserved.
-        </p>
-    </div>
+<footer>
+    © {{ date('Y') }}
+    {{ $biodata?->name ?? config('app.name') }}.
+    All rights reserved.
 </footer>
 
-<script src="{{ asset('profile-template/js/profile.js') }}"></script>
+<script src="{{ asset('profile-template/js/profile.js') }}?v={{ time() }}"></script>
 
 </body>
 </html>
